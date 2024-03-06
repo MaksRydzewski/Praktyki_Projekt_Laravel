@@ -1,2 +1,2 @@
-# Szablon_laravel
-Próba dania projektu laravel na githuba
+# Praktyki_Projekt_Laravel
+Aplikacja do tworzenia posiłków przez użytkownika, projekt wykonany podczas praktyk szkolnych 
