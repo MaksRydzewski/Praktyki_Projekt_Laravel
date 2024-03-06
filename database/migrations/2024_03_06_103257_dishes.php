@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        $table->string(„name”);
+        $table->id();
+        $table->float(„price”);
+        $table->string(„description”);
+        $table->string(„type”);
     }
 
     /**
@@ -19,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        $table->drop();
     }
 };
