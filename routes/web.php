@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,17 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });
 */
+Route::get('/dishes', [DishController::class, 'show']);
 
-Route::get('/', function () {
-    return view('hello');
-});
+
+//TEST POŁĄCZENIA Z BAZĄ
+/*Route::get('/connection',function(){
+    try{
+        DB::connection()->getPdo();
+        return 'connected sucly';
+    }
+    catch(\Exception $ex)
+    {
+        dd($ex->getMessage());
+    }
+});*/
