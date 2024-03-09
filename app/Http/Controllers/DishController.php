@@ -11,7 +11,13 @@ class DishController extends Controller
 {
     public function index(Request $request): View
     {
-        return view('dishes.index');
+        $dishes = [];
+        return view('dishes.index', compact('dishes'));
+    }
+
+    public function create(Request $request): View
+    {
+        return view('dishes.create');
     }
 
     public function show(Request $request, int $id): View
@@ -21,8 +27,9 @@ class DishController extends Controller
         return view('dishes.show', compact('dish'));
     }
 
-    public function delete(Request $request, int $id): View
+    public function delete(Request $request, int $id): RedirectResponse
     {
+        return redirect('dishes');
     }
 
     public function store(Request $request): RedirectResponse

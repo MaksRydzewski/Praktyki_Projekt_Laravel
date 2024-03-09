@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DishController;
 
 /*
@@ -24,9 +23,10 @@ Route::group([
     'prefix' => 'dishes'
 ], function () {
     Route::get('', [DishController::class, 'index']);
+    Route::post('', [DishController::class, 'store']);
     Route::get('create', [DishController::class, 'create']);
-    Route::post('create', [DishController::class, 'store']);
     Route::get('{id}', [DishController::class, 'show']);
     Route::patch('{id}', [DishController::class, 'update']);
+    Route::delete('{id}', [DishController::class, 'delete']);
 });
 
