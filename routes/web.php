@@ -19,17 +19,14 @@ use App\Http\Controllers\DishController;
     return view('welcome');
 });
 */
-Route::get('/dishes', [DishController::class, 'show']);
 
+Route::group([
+    'prefix' => 'dishes'
+], function () {
+    Route::get('', [DishController::class, 'index']);
+    Route::get('create', [DishController::class, 'create']);
+    Route::post('create', [DishController::class, 'store']);
+    Route::get('{id}', [DishController::class, 'show']);
+    Route::patch('{id}', [DishController::class, 'update']);
+});
 
-//TEST POŁĄCZENIA Z BAZĄ
-/*Route::get('/connection',function(){
-    try{
-        DB::connection()->getPdo();
-        return 'connected sucly';
-    }
-    catch(\Exception $ex)
-    {
-        dd($ex->getMessage());
-    }
-});*/

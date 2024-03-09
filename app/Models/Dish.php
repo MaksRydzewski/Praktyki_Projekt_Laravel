@@ -5,14 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $type
+ * @property string $name
+ * @property string $description
+ * @property float $price
+ */
 class Dish extends Model
 {
     use HasFactory;
 
-    protected $fillabel=[
-        'id',
-        'odred_id',
-        'dish_id',
-        'cena'
+    protected $table = 'dishes';
+    protected $fillable = [
+        'type',
+        'name',
+        'description',
+        'price'
     ];
 }
