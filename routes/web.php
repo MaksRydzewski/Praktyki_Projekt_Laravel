@@ -14,10 +14,17 @@ use App\Http\Controllers\DishController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
+Route::get('/firstpage', function () {
+    return view('dishes.firstpage');
 });
-*/
+
+Route::get('/update', function () {
+    return view('dishes.update');
+});
+
+Route::get('/delete', function () {
+    return view('dishes.delete');
+});
 
 Route::group([
     'prefix' => 'dishes'
