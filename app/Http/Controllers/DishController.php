@@ -11,21 +11,20 @@ class DishController extends Controller
 {
     public function index(Request $request): View
     {
-       /* $products =DB::table('products')
-        ->orderBy('id', 'asc')
-        ->lists('id','type','name','description','price');
-        return View::make('dishes.index', array('products'=>$products));
-        */$dishes = [];
+        //TODO: Wysweitlic listę dań
+        $dishes = [];
+
         return view('dishes.index', compact('dishes'));
     }
 
-    public function create(Request $request): View
+    public function create(): View
     {
         return view('dishes.create');
     }
 
     public function show(Request $request, int $id): View
     {
+        //TODO: wysweitlic danie o podanym id
         $dish = '';
 
         return view('dishes.show', compact('dish'));
@@ -33,18 +32,10 @@ class DishController extends Controller
 
     public function delete(Request $request, int $id): RedirectResponse
     {
-        $request=Dish::find($id);
+        //TODO: zrobic walidacje sprawdzic zy istnieje i usunać
+        $dish = Dish::find($id);
 
-        if ($request)
-        {
-
-            $request->delete();
-            echo "Użytkownik został pomyślnie usunięty.";
-            
-        }else{
-
-            echo "Użytkownik o podanym identyfikatorze nie istnieje.";
-        }
+        $dish->delete();
 
         return redirect('dishes');
     }
@@ -70,19 +61,20 @@ class DishController extends Controller
             'price' => 'required',
         ]);
 
-        $rekord = DishController::find($id);
+        $dish = DishController::find($id);
 
-        if ($rekord) {
-            $rekord->type = $request->input('type');
-            $rekord->name = $request->input('name');
-            $rekord->description = $request->input('description');
-            $rekord->price = $request->input('price');
-            $rekord->save();
 
-            return redirect()->route('')->with('success', 'Rekord został zaktualizowany pomyślnie.');
-        } else {
-            return redirect()->route('')->with('error', 'Nie znaleziono rekordu o podanym identyfikatorze.');
+        $dish->type = $request->input('type');
+        $dish->name = $request->input('name');
+        $dish->description = $request->input('description');
+        $dish->price = $request->input('price');
+
+        $isSuccess = $dish->save();
+
+        if ($isSuccess) {
+            return redirect()->route('dishes')->with('success', 'Rekord został zaktualizowany pomyślnie.');
         }
-        return redirect('dishes');
+
+        return redirect()->route('dishes')->with('error', 'Nie znaleziono rekordu o podanym identyfikatorze.');
     }
 }
