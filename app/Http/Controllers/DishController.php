@@ -51,27 +51,23 @@ class DishController extends Controller
         return redirect('dishes');
     }
 
-    public function update(Request $request, int $id): RedirectResponse
-    {
-
-            $dish=Dish::findOrFail($id);
-
-            $validatedData = $request->validate([
-            'type' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-        ]);
-
-        $dish= Dish::findOrFail($id);
-
-        $dish->update($validatedData);
-
-        return redirect('/dishes/index')->with('success', 'Dish updated successfully!');
-
         function showData($id)
         {
-            return Dish::find($id);
+            $data= Dish::find($id);
+            return view('dishes.edit',['data'=>$data]);
+
         }
-}
+
+        public function update(Request $request, int $id)
+    {
+
+        $data=Dish::find($req->id);
+        $data->type=$req->type;
+        $data->name=$req->name;
+        $data->price=$req->price;
+        $data->description=$req->description;
+        $data->save();
+        return redirect('index');
+
+    }
 }

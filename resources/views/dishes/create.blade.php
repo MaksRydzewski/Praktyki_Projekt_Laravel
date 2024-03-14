@@ -21,6 +21,15 @@
 
             <button type="submit" id="submit">Create dish</button>
     </form>
+
+    <h1>Dishes list:</h1>
+<div class="list">
+    <div class="dish">
+    @foreach($dishes as $dish)
+        <h2>{{ $dish->name}}</h2><a href={{"edit/".$dish['id']}}>EDIT</a>
+        </form>
+        @endforeach
+    </div>
     
 </div>
 </div>

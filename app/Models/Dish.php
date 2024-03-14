@@ -24,4 +24,6 @@ class Dish extends Model
         'description',
         'price'
     ];
+
+    public $timestamps=false;
 }
