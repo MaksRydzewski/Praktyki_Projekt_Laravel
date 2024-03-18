@@ -22,9 +22,9 @@
         <p>ID:{{ $dish->id }}</p>
         <p>TYPE:{{ $dish->type }}</p>
         <p>DESCRIPTION:{{ $dish->description }}</p>
-        <p>PRICE:{{ $dish->price }}</p><a href={{"edit/".$dish['id']}}>EDIT</a>
+        <p>PRICE:{{ $dish->price }}</p><a class="update" href={{"edit/".$dish['id']}}>EDIT</a>
+        <a class="delete" href={{"delete/".$dish['id']}}>DELETE</a><br>
         </div>
-        </form>
         @endforeach
 
 

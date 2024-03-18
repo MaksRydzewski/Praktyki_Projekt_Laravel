@@ -65,8 +65,34 @@ flex-wrap: wrap;
 }
 
 .dish{
-    
+    margin:10px;
+    background:#2F2D36;
+    border-radius:10px;
+    border: 5px #5F9BD1 solid;
+    color:#82829B;
+    padding:10px
 }
+
+.update{
+    margin:10px;
+    margin-left:30px;
+    padding: 5px;
+    background:#228B22;
+    border-radius:10px;
+    border: 5px #006400 solid;
+    color:#006400;
+}
+
+.delete{
+    margin:10px;
+    padding: 5px;
+    background:#FF0000;
+    border-radius:10px;
+    border: 5px #8B0000 solid;
+    color:#8B0000;
+    margin-left:60px;
+}
+
 
         </style>
     </head>

@@ -8,4 +8,9 @@
 06.03-Prace na tablicach-migracja wraz z modelem
 07.03-Zapoznanie się z systemem wersjonowania-git
 08.03-Utworzenie funkcji update-akutalizowanie danych, delete-usuwanie danych oraz index-wyświetlanie danych
-11.03-Wprowadzenie poprawek, stworzniem stylu do widoku
+11.03-Wprowadzenie poprawek, stworzniem stylu do widoku.
+12.03-Dodanie prostej walidacji.
+13.03-Dodawanie posiłków do tablicy dishes.
+14.03-Naprawa systemu wersjonowania-git. Powód błędu-brak zgodności wersji projektu.
+15.03-Ostylowanie widoku tworzenia posiłku.
+18.03-Ostylowanie widoku wyświetlania posiłków.

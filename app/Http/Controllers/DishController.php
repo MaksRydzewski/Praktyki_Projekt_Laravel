@@ -21,20 +21,12 @@ class DishController extends Controller
         return view('dishes.create');
     }
 
-    /*public function show(Request $request, int $id): View
+    public function delete(Request $request)
     {
-    //TODO: wysweitlic danie o podanym id
-        $dish = '';
-
-        return view('dishes.show', compact('dish'));
-    }*/
-
-    public function delete(Request $request, int $id): RedirectResponse
-    {
-        //TODO: zrobic walidacje sprawdzic zy istnieje i usunać
-        $dish = Dish::find($id);
-        $dish->delete();
-        return redirect('dishes');
+        $data=Dish::find($id);
+        $data->delete();
+        return redirect('dishes.index');
+        
     }
 
     public function store(Request $request): RedirectResponse
@@ -46,7 +38,6 @@ class DishController extends Controller
         $dish->price = $request->input('price');
         $dish->save();
 
-        
 
         return redirect('dishes');
     }

@@ -9,16 +9,16 @@
 </style>
 <div class="conteiner">
 <div class="content">
-<form method="GET" action="/dishes/index">
+<form method="PATCH" action="dishes.index">
         @csrf
         <input type="hidden" name="id" value="{{$data['id']}}">
-            <input type="text" id="type" name="type" value="{{$data['type']}}" >
+            <input type="text" id="type" name="type" placeholder="Type" >
 
-            <input type="text" id="name" name="name" value="{{$data['name']}}">
+            <input type="text" id="name" name="name" placeholder="Name">
 
-            <input type="number" id="price" name="price" value="{{$data['price']}}" >
+            <input type="number" id="price" name="price" placeholder="Prcie" >
 
-            <textarea name="description" id="description" value="{{$data['description']}}" ></textarea>
+            <textarea name="description" id="description" placeholder="Description" ></textarea>
 
             <button type="submit" id="submit">Update</button>
     </form>
