@@ -33,7 +33,7 @@ flex-wrap: wrap;
     display: flex;
     width: 100%;
     height: 680px;
-    background-color:#18181C ;
+    background-color:#FFFFFF ;
     margin-left: 50px;
     margin-right: 50px;
     border-radius: 6px;
@@ -65,6 +65,7 @@ flex-wrap: wrap;
 }
 
 .dish{
+    flex-wrap:wrap;
     margin:10px;
     background:#2F2D36;
     border-radius:10px;

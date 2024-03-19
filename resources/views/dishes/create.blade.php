@@ -9,7 +9,7 @@
 <div class="conteiner">
 <h1>Create a new dish:</h1>
 <div class="content">
-<form method="PATCH" action="/dishes">
+<form method="POST" action="/dishes">
         @csrf
             <input type="text" id="type" name="type" placeholder="Dish type">
 

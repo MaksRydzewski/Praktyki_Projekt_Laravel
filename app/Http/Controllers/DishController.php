@@ -21,7 +21,7 @@ class DishController extends Controller
         return view('dishes.create');
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request, int $id)
     {
         $data=Dish::find($id);
         $data->delete();
@@ -31,6 +31,14 @@ class DishController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+
+        $request->validate([
+            'type' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+        ]);
+
         $dish = new Dish();
         $dish->type = $request->input('type');
         $dish->name = $request->input('name');
@@ -39,7 +47,7 @@ class DishController extends Controller
         $dish->save();
 
 
-        return redirect('dishes');
+        return redirect()->route('dishes');
     }
 
         function showData($id)
@@ -52,13 +60,21 @@ class DishController extends Controller
         public function update(Request $request, int $id)
     {
 
-        $data=Dish::find($req->id);
-        $data->type=$req->type;
-        $data->name=$req->name;
-        $data->price=$req->price;
-        $data->description=$req->description;
+        $request->validate([
+            'type' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+        ]);
+
+        $data=Dish::find($id);
+        $data->type=$request->input('type');
+        $data->name=$request->input('name');
+        $data->price=$request->input('price');
+        $data->description=$request->input('description');
         $data->save();
-        return redirect('index');
+
+        return redirect()->route('dishes');
 
     }
 }
