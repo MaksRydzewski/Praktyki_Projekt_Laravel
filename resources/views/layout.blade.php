@@ -33,7 +33,7 @@ flex-wrap: wrap;
     display: flex;
     width: 100%;
     height: 680px;
-    background-color:#FFFFFF ;
+    background-color:#18181C ;
     margin-left: 50px;
     margin-right: 50px;
     border-radius: 6px;
@@ -75,8 +75,7 @@ flex-wrap: wrap;
 }
 
 .update{
-    margin:10px;
-    margin-left:30px;
+ 
     padding: 5px;
     background:#228B22;
     border-radius:10px;
@@ -84,8 +83,7 @@ flex-wrap: wrap;
     color:#006400;
 }
 
-.delete{
-    margin:10px;
+#delete{
     padding: 5px;
     background:#FF0000;
     border-radius:10px;
@@ -93,6 +91,11 @@ flex-wrap: wrap;
     color:#8B0000;
     margin-left:60px;
 }
+
+span{
+        margin-left:20px;
+        color:red;
+    }
 
 
         </style>
