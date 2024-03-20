@@ -16,7 +16,7 @@ class DishController extends Controller
         return view('dishes.index',['dishes'=>$dishes]);
     }
 
-    public function create(): View
+    public function create(Request $request): View
     {
         return view('dishes.create');
     }
@@ -25,7 +25,7 @@ class DishController extends Controller
     {
         $data=Dish::find($id);
         $data->delete();
-        return redirect('dishes.index');
+        return redirect('dishes/index');
 
     }
 
@@ -67,14 +67,27 @@ class DishController extends Controller
             'price' => 'required',
         ]);
 
-        $data=Dish::find($id);
-        $data->type=$request->input('type');
-        $data->name=$request->input('name');
-        $data->price=$request->input('price');
-        $data->description=$request->input('description');
+        $data = Dish::find($id);
+
+        // Sprawdź, które pola są przekazane
+        $type = $request->input('type') ?? $data->type;
+        $name = $request->input('name') ?? $data->name;
+        $price = $request->input('price') ?? $data->price;
+        $description = $request->input('description') ?? $data->description;
+
+        // Aktualizuj dane tylko jeśli zostały przekazane
+        $data->type = $type;
+        $data->name = $name;
+        $data->price = $price;
+        $data->description = $description;
         $data->save();
+
+        // Zwróć odpowiednią wiadomość w zależności od brakujących danych
+        if (!$type || !$name || !$price || !$description) {
+            return redirect()->back()->with('error', 'Niektóre wymagane dane są brakujące.');
+        }
 
         return redirect()->route('dishes');
 
-    }
+        }
 }

@@ -10,7 +10,7 @@ Route::group([
     Route::get('create', [DishController::class, 'create']);
     Route::get('edit/{id}', [DishController::class, 'showData']);
     Route::patch('edit/{id}', [DishController::class, 'update'])->name('dishes.update');
-    Route::delete('delete/{id}', [DishController::class, 'delete']);
+    Route::delete('delete/{id}', [DishController::class, 'delete'])->name('dishes.delete');
     Route::post('', [DishController::class, 'store']);
 
     ///Route::get('{id}', [DishController::class, 'show'])->name('dishes');

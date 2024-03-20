@@ -23,7 +23,14 @@
         <p>TYPE:{{ $dish->type }}</p>
         <p>DESCRIPTION:{{ $dish->description }}</p>
         <p>PRICE:{{ $dish->price }}</p><a class="update" href={{"edit/".$dish['id']}}>EDIT</a>
-        <a class="delete" href={{"delete/".$dish['id']}}>DELETE</a><br>
+        <form action="{{ route('dishes.delete', [ $dish->id ]) }}" method="POST">
+    
+            @method('delete')
+            @csrf
+            <input type="hidden" name="delete" value="{{$dish->id}}">
+            <button type="submit" id="delete">DELETE</button>
+        </form>
+       
         </div>
         @endforeach
 
