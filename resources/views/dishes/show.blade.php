@@ -1,22 +1,22 @@
 @extends('layout')
 @section('content')
     <h1>UPDATE</h1>
-    <form method="POST" action="/dishes">
-        @csrf
-        <div>
-            <input type="text" name="type" placeholder="Dish type">
-        </div>
-        <div>
-            <input type="text" name="name" placeholder="Dish title">
-        </div>
-        <div>
-            <input type="number" name="price" placeholder="Dish title">
-        </div>
-        <div>
-            <textarea name="description" placeholder="Dish description"></textarea>
-        </div>
-        <div>
-            <button type="submit">Create dish</button>
-        </div>
-    </form>
+    <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST">
+    @csrf
+    @method('PUT')
+
+    <label for="type">Typ:</label>
+    <input type="text" name="type" value="{{ $dish->type }}"><br>
+
+    <label for="name">Nazwa:</label>
+    <input type="text" name="name" value="{{ $dish->name }}"><br>
+
+    <label for="description">Opis:</label>
+    <textarea name="description">{{ $dish->description }}</textarea><br>
+
+    <label for="price">Cena:</label>
+    <input type="text" name="price" value="{{ $dish->price }}"><br>
+
+    <button type="submit">Aktualizuj</button>
+</form>
 @endsection

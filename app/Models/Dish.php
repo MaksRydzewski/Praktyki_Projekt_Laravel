@@ -18,9 +18,12 @@ class Dish extends Model
 
     protected $table = 'dishes';
     protected $fillable = [
+        'id',
         'type',
         'name',
         'description',
         'price'
     ];
+
+    public $timestamps=false;
 }

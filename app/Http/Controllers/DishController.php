@@ -9,12 +9,11 @@ use Illuminate\View\View;
 
 class DishController extends Controller
 {
-    public function index(Request $request): View
+    public function index()
     {
-        //TODO: Wysweitlic listę dań
-        $dishes = [];
+        $dishes = Dish::all();
 
-        return view('dishes.index', compact('dishes'));
+        return view('dishes.index',['dishes'=>$dishes]);
     }
 
     public function create(): View
@@ -22,38 +21,17 @@ class DishController extends Controller
         return view('dishes.create');
     }
 
-    public function show(Request $request, int $id): View
+    public function delete(Request $request, int $id)
     {
-        //TODO: wysweitlic danie o podanym id
-        $dish = '';
+        $data=Dish::find($id);
+        $data->delete();
+        return redirect('dishes.index');
 
-        return view('dishes.show', compact('dish'));
-    }
-
-    public function delete(Request $request, int $id): RedirectResponse
-    {
-        //TODO: zrobic walidacje sprawdzic zy istnieje i usunać
-        $dish = Dish::find($id);
-
-        $dish->delete();
-
-        return redirect('dishes');
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $dish = new Dish();
-        $dish->type = $request->input('type');
-        $dish->name = $request->input('name');
-        $dish->description = $request->input('description');
-        $dish->price = $request->input('price');
-        $dish->save();
 
-        return redirect('dishes');
-    }
-
-    public function update(Request $request, int $id): RedirectResponse
-    {
         $request->validate([
             'type' => 'required',
             'name' => 'required',
@@ -61,20 +39,42 @@ class DishController extends Controller
             'price' => 'required',
         ]);
 
-        $dish = DishController::find($id);
-
-
+        $dish = new Dish();
         $dish->type = $request->input('type');
         $dish->name = $request->input('name');
         $dish->description = $request->input('description');
         $dish->price = $request->input('price');
+        $dish->save();
 
-        $isSuccess = $dish->save();
 
-        if ($isSuccess) {
-            return redirect()->route('dishes')->with('success', 'Rekord został zaktualizowany pomyślnie.');
+        return redirect()->route('dishes');
+    }
+
+        function showData($id)
+        {
+            $data= Dish::find($id);
+            return view('dishes.edit',['data'=>$data]);
+
         }
 
-        return redirect()->route('dishes')->with('error', 'Nie znaleziono rekordu o podanym identyfikatorze.');
+        public function update(Request $request, int $id)
+    {
+
+        $request->validate([
+            'type' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+        ]);
+
+        $data=Dish::find($id);
+        $data->type=$request->input('type');
+        $data->name=$request->input('name');
+        $data->price=$request->input('price');
+        $data->description=$request->input('description');
+        $data->save();
+
+        return redirect()->route('dishes');
+
     }
 }

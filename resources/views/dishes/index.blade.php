@@ -1,16 +1,35 @@
+
 @extends('layout')
 @section('content')
-    <h1>Dishes:</h1>
+<style>
+    h1{
+        color:#FFFFFF;
+        margin-left: 50px;
+    }
+    h2{
+        color:
+    }
+    p{
+        color:#82829B;
+    }
+</style>
+<div class="conteiner">
+<h1>Dishes list:</h1>
+<div class="list">
     @foreach($dishes as $dish)
-        <div>
-            <h2>
-                NAZWA: <a href="{{route('dishes.show', ['id' => $dish->id])}}">
-                    {{ $post->title }}
-                </a>
-            </h2>
-            <p>
-                {{ $dish->type }}
-            </p>
+    <div class="dish">
+        <h2>{{ $dish->name}}</h2>
+        <p>ID:{{ $dish->id }}</p>
+        <p>TYPE:{{ $dish->type }}</p>
+        <p>DESCRIPTION:{{ $dish->description }}</p>
+        <p>PRICE:{{ $dish->price }}</p><a class="update" href={{"edit/".$dish['id']}}>EDIT</a>
+        <a class="delete" href={{"delete/".$dish['id']}}>DELETE</a><br>
         </div>
-    @endforeach
+        @endforeach
+
+
+</div>
+</div>
+
+
 @endsection
