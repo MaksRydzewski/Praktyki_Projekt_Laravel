@@ -1,0 +1,18 @@
+26.02.2024-Zapoznanie się z programami do pracy:trello,github oraz zasadami oceniania
+27.02.2024-Przypomnienie podstaw języka PHP
+28.02.2024-Drógi dzień przypominania podstaw języka PHP
+29.02.2024-Przypomnienie podstaw języka SQL
+01.02.2024-Drógi dzień przypominania podstaw języka SQL
+04.03-Założenie konta na githubie, zapoznanie się z frameworkiem Laravel, przygotowanie repo pod Laravela
+05.03-Praca z gitem, praca z migracjami
+06.03-Prace na tablicach-migracja wraz z modelem
+07.03-Zapoznanie się z systemem wersjonowania-git
+08.03-Utworzenie funkcji update-akutalizowanie danych, delete-usuwanie danych oraz index-wyświetlanie danych
+11.03-Wprowadzenie poprawek, stworzniem stylu do widoku.
+12.03-Dodanie prostej walidacji.
+13.03-Dodawanie posiłków do tablicy dishes.
+14.03-Naprawa systemu wersjonowania-git. Powód błędu-brak zgodności wersji projektu.
+15.03-Ostylowanie widoku tworzenia posiłku.
+18.03-Ostylowanie widoku wyświetlania posiłków.
+19.03-Dodanie walidacji do metody create oraz update 
+20.03-Utworzenie folderu Repozytorium
