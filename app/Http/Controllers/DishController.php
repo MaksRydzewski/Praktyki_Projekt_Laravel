@@ -37,7 +37,7 @@ class DishController extends Controller
         );
 
         return redirect('dishes/index');
-        
+
     }
 
     public function store(Request $request,DishRepository $dishRepository): RedirectResponse

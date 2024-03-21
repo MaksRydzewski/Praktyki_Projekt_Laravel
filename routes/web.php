@@ -12,7 +12,7 @@ Route::group([
     Route::patch('edit/{id}', [DishController::class, 'update'])->name('dishes.update');
     Route::delete('delete/{id}', [DishController::class, 'delete'])->name('dishes.delete');
     Route::post('', [DishController::class, 'store']);
-    
+
     ///Route::get('{id}', [DishController::class, 'show'])->name('dishes');
     //Route::delete('{id}', [DishController::class, 'delete']);
     //Route::put('/dishes/{dish}', [DishController::class, 'update'])->name('dishes.update');

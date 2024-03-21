@@ -4,7 +4,7 @@
     <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST">
     @csrf
     @method('PUT')
-    
+
     <label for="type">Typ:</label>
     <input type="text" name="type" value="{{ $dish->type }}"><br>
 
