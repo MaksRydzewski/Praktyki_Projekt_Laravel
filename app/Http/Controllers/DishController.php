@@ -6,9 +6,17 @@ use App\Models\Dish;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Repository\DishRepository;
 
 class DishController extends Controller
 {
+    protected $dishRepository;
+
+    public function __construct(DishRepository $dishRepository)
+    {
+        $this->dishRepository = $dishRepository;
+    }
+
     public function index()
     {
         $dishes = Dish::all();
@@ -21,15 +29,18 @@ class DishController extends Controller
         return view('dishes.create');
     }
 
-    public function delete(Request $request, int $id)
+    public function delete(Request $request, int $id, DishRepository $dishRepository)
     {
-        $data=Dish::find($id);
-        $data->delete();
+        $dish = $dishRepository->find($id);
+        $dishRepository->delete(
+            $dish
+        );
+
         return redirect('dishes/index');
         
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request,DishRepository $dishRepository): RedirectResponse
     {
 
         $request->validate([
@@ -52,42 +63,17 @@ class DishController extends Controller
 
         function showData($id)
         {
-            $data= Dish::find($id);
-            return view('dishes.edit',['data'=>$data]);
+            $dish= Dish::find($id);
+            return view('dishes.edit',['dish'=> $dish]);
 
         }
 
-        public function update(Request $request, int $id)
+        public function update(Request $request, int $id,DishRepository $dishRepository)
     {
-
-        $request->validate([
-            'type' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-        ]);
-
-        $data = Dish::find($id);
-
-        // Sprawdź, które pola są przekazane
-        $type = $request->input('type') ?? $data->type;
-        $name = $request->input('name') ?? $data->name;
-        $price = $request->input('price') ?? $data->price;
-        $description = $request->input('description') ?? $data->description;
+            $updatedDish = $this->dishRepository->updateDish($request, $id);
     
-        // Aktualizuj dane tylko jeśli zostały przekazane
-        $data->type = $type;
-        $data->name = $name;
-        $data->price = $price;
-        $data->description = $description;
-        $data->save();
-    
-        // Zwróć odpowiednią wiadomość w zależności od brakujących danych
-        if (!$type || !$name || !$price || !$description) {
-            return redirect()->back()->with('error', 'Niektóre wymagane dane są brakujące.');
-        }
 
         return redirect()->route('dishes');
 
-        }
+}
 }
